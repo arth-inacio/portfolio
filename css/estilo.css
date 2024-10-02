@@ -138,15 +138,46 @@ section {
     justify-content: space-evenly;
 }
 
+.services-box {
+    display: flex;
+    flex-direction: column;
+    min-height: 25rem;
+    margin-bottom: 1rem;
+}
+
+
 .services-container .services-box {
     padding: 2rem 1rem 2.5rem;
     border-radius: 1.2rem;
     text-align: center;
-    border: solid 0.15rem var(--main--color);
+    border: solid 0.15rem var(--bg-color-01);
     background-color: var(--bg-color-02);
     transition: 0.5s ease;
 }
 
-.services-box {
-    
+.services-container:hover .services-box:hover {
+   border-color: var(--main--color);
+   transform: scale(1.01);
 }
+
+.services-box i {
+    font-size: 4.3rem;
+    color: var(--main--color);
+}
+
+.services-box h3 {
+    font-size: 1.5rem;
+}
+
+.services-box p {
+    font-size: 0.5rem;
+    letter-spacing: 0.1rem;
+    /* n linhas .. */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
