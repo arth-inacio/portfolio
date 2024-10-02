@@ -50,3 +50,103 @@ header {
 
     border: solid 1px var(--color-02) /* teste */
 }
+
+.logo {
+    font-size: 1.7rem;
+    color: var(--text-color);
+    font-weight: 600;
+    cursor: default;
+}
+
+.nav a{
+    font-size: 1.2rem;
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    transition: 0.4s;
+    border: solid 1px var(--color-02)
+}
+
+.nav a:hover {
+    color: var(--main--color);
+}
+
+section {
+    min-height: 100vh;
+    padding: 6rem 6rem 2rem;
+}
+
+.home , .sobre{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.home-img {
+    border-right: solid 0.6rem;
+    border-bottom: solid 0.6rem;
+    border-image: linear-gradient(135deg, transparent 50%, rgb(74, 170, 74)) 1;
+}
+
+.sobre-img {
+    border-left: solid 0.6rem;
+    border-bottom: solid 0.6rem;
+    border-image: linear-gradient(225deg, transparent 50%, rgb(74, 170, 74)) 1;
+}
+
+.home-img img, .sobre-img img{
+    width: 120%;
+}
+
+.sobre {
+    background-color: var(--bg-color-02);
+}
+
+.home-content, .sobre-content {
+    width: 45%;
+
+}
+
+.home-content h1, .sobre-content h1 {
+    font-weight: 700;
+    line-height: 1.3;
+    font-size: 1.6rem;
+
+}
+
+.home-content h3, .sobre-content h3 {
+    width: 45%;
+    font-weight: 700;
+    font-size: 1.6rem;
+
+}
+
+.home-content p, .sobre-content p {
+   margin-top: 1.2rem;
+   text-align: justify;
+}
+
+.services h2, .portifolio h2, .contatos h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.services-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.services-container .services-box {
+    padding: 2rem 1rem 2.5rem;
+    border-radius: 1.2rem;
+    text-align: center;
+    border: solid 0.15rem var(--main--color);
+    background-color: var(--bg-color-02);
+    transition: 0.5s ease;
+}
+
+.services-box {
+    
+}
