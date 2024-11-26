@@ -446,6 +446,51 @@ footer {
 
 /* Tamanho p/ Tablets - Medium(md) */
 @media (min-width: 768px) {
+    .menu-hamburguer {
+        display: none;
+    }
+
+    .nav {
+        display: block;
+    }
+
+    .nav-responsive, .nav-responsive a {
+        display: none;
+
+    }
+
+    .home, .about {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .home-img, .about-img {
+        max-width: 35%;
+    }
+
+    .home-content, .about-content {
+        width: 50%;
+    }
+
+    /* .services-container{
+        flex-direction: column;
+        align-items: center;
+    } */
+
+    .services-box {
+        width: 60%;
+        margin-bottom: 2rem;
+    }
+
+    .portfolio-container {
+        grid-template-columns: auto auto;
+    }
+
+    form .imput-box input {
+        width: 49%;
+    }
+  
+
     header {
         background-color: var(--color-03); /*teste*/
     }
@@ -453,6 +498,15 @@ footer {
 
 /* Tamanho p/ Laptops - Large(lg) */
 @media (min-width: 992px) {
+    /* .home-img, .about-img {
+        max-width: 35%;
+    } */
+
+    .services-container {
+        flex-direction: row;
+        gap: 1.2rem;
+    }
+
     header {
         background-color: var(--color-04); /*teste*/
     }
@@ -460,11 +514,26 @@ footer {
 
 /* Tamanho p/ Laptops - Extra-Large(xl) */
 @media (min-width: 1200px) {
+
+    .home-img, .about-img {
+        max-width: 25%;
+    }
+
+    .home-content h1 {
+        font-size: 2.7rem;
+    }
+
+    .home-content h3 {
+        font-size: 2rem;
+    }
+
+    .portfolio-container {
+        grid-template-columns: auto auto auto;
+    }
+
     header {
         background-color: var(--color-02); /*teste*/
     }
 }
-
-
 
 /* Fim media queries */
