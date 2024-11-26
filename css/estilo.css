@@ -366,3 +366,105 @@ footer {
     transform: translate(0, -0.65rem) rotate(45deg);
 }
 /* fim barra de navegação */
+
+/* Media queries */
+/* Tamanho p/ Smartphones (portrait) xs */
+@media (min-width: 0px) {
+    .menu-hamburguer {
+        display: block;
+    }
+
+    .nav {
+        display: None;
+    }
+
+    .nav-responsive {
+        display: block;
+        font-size: 1.2rem;
+        margin: 0.5rem 0;
+    }
+
+    section {
+        padding: 6rem 2.5rem;
+
+    }
+
+    .home, .about {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+
+    .home-img, .about-img {
+        width: 80%;
+        max-width: 80%;
+    }
+
+    .home-content, .about-content {
+        width: 100%;
+    }
+
+    .home-content div {
+        text-align: center;
+    }
+
+    .home-content h1, .about-content h1 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        line-height: 1.3;
+    }
+
+    .services-container{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .services-box {
+        width: 100%;
+    }
+
+    header {
+        background-color: var(--color-01); /*teste*/
+    }
+}
+
+/* Tamanho p/ Smartphones (paisagem) sm */
+@media (min-width: 576px) {
+    .home-img, .about-img {
+        width: 65%;
+        max-width: 65%;
+
+    }
+
+    .services-box {
+        width: 100%;
+    }
+
+    header {
+        background-color: var(--main--color); /*teste*/
+    }
+}
+
+/* Tamanho p/ Tablets - Medium(md) */
+@media (min-width: 768px) {
+    header {
+        background-color: var(--color-03); /*teste*/
+    }
+}
+
+/* Tamanho p/ Laptops - Large(lg) */
+@media (min-width: 992px) {
+    header {
+        background-color: var(--color-04); /*teste*/
+    }
+}
+
+/* Tamanho p/ Laptops - Extra-Large(xl) */
+@media (min-width: 1200px) {
+    header {
+        background-color: var(--color-02); /*teste*/
+    }
+}
+
+
+
+/* Fim media queries */
