@@ -6,4 +6,11 @@ menuHamburguer.addEventListener('click', () => {
 function toggleMenu() {
     const nav = document.querySelector('.nav-responsive');
     menuHamburguer.classList.toggle('change');
+
+    nav.style.display = 'none';
+    if (menuHamburguer.classList.contains('change')){
+        nav.style.display = 'block';
+
+    }
+
 }
