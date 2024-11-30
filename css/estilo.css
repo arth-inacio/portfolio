@@ -175,7 +175,7 @@ span {
 }
 
 .services-box i {
-    font-size: 4.3rem;
+    font-size: 8.3rem;
     color: var(--main--color);
 }
 
@@ -184,7 +184,7 @@ span {
 }
 
 .services-box p {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
     letter-spacing: 0.1rem;
     display: -webkit-box;
     -webkit-line-clamp: 4;
