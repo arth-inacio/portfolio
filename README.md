@@ -35,4 +35,7 @@ cd portfolio</code></pre>
         <li><strong>Executar o projeto:</strong>
             <pre><code>python main.py</code></pre>
         </li>
+        <li><strong>Acesso ao portfólio:</strong>
+        https://arth-inacio.github.io/portfolio/
+        </li>
     </ol>
