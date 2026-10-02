@@ -1,181 +1,207 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Website</title>
-    <link rel="favicon" href="#" type="image/x-icon">
-    <!-- Ícones redes sociais -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link href="css/estilo.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arthur Inácio · Engenheiro de Web Scraping e Automação</title>
+<meta name="description" content="Desenvolvedor de software especializado em web scraping, RPA e APIs com FastAPI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7f5f1; --ink:#1f2633; --muted:#5b6475; --line:#ddd8cf;
+  --blue:#23408e; --blue-ink:#fff; --ochre:#e2a52b; --sky:#2b3445;
+  --display:'Bricolage Grotesque',system-ui,sans-serif;
+  --body:'Public Sans',system-ui,sans-serif;
+  box-sizing:border-box;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--paper:#171c27;--ink:#eeeae2;--muted:#a2a9b8;--line:#2d3546;--blue:#8fa8ee;--blue-ink:#101524}
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ochre);outline-offset:3px;border-radius:4px}
+.wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+
+/* header */
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:64px}
+.logo{font:800 1.2rem var(--display);text-decoration:none}
+nav{display:flex;gap:1.5rem}
+nav a{text-decoration:none;font-weight:500;font-size:.95rem;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+
+/* hero */
+.hero{padding:clamp(2.5rem,7vw,6rem) 0}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,6vw,5rem);align-items:center}
+.hero h1{font:800 clamp(2.8rem,7.5vw,5.8rem)/.98 var(--display);letter-spacing:-.03em;margin:0 0 1.25rem}
+.hero .role{font:600 1.25rem var(--display);color:var(--blue);margin:0 0 .75rem}
+.hero p.lead{max-width:34rem;color:var(--muted);margin:0 0 2rem}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:2rem}
+.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid var(--blue);transition:transform .15s}
+.btn.primary{background:var(--blue);color:var(--blue-ink)}
+.btn.ghost{color:var(--blue)}
+.btn:hover{transform:translateY(-2px)}
+.social{display:flex;gap:1.25rem;font-weight:500;font-size:.95rem}
+.photo{position:relative;justify-self:center;width:min(100%,380px)}
+.photo img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:50% 30%;border-radius:999px 999px 24px 24px;border:6px solid var(--paper);box-shadow:0 0 0 3px var(--ochre)}
+@media (prefers-reduced-motion:no-preference){
+  .hero .wrap>*{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+  .hero .photo{animation-delay:.15s}
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}}
+}
+
+/* sections */
+section{padding:clamp(3rem,7vw,5.5rem) 0;border-top:1px solid var(--line)}
+h2{font:800 clamp(1.9rem,4vw,2.8rem)/1.1 var(--display);letter-spacing:-.02em;margin:0 0 2.5rem}
+h3{font:700 1.4rem/1.2 var(--display);margin:0 0 .75rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem)}
+.two p{color:var(--muted);margin:0 0 1rem}
+.link{font-weight:600;color:var(--blue);text-underline-offset:4px}
+
+.project{display:grid;grid-template-columns:5fr 6fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center;margin-bottom:3.5rem}
+.project:nth-child(even){grid-template-columns:6fr 5fr}
+.project:nth-child(even) img{order:2}
+.project img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
+.project p{color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem;padding:0;margin:0 0 1rem;list-style:none}
+.tags li{font-size:.85rem;font-weight:500;padding:.2rem .7rem;border:1px solid var(--line);border-radius:999px}
+
+.about{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(2rem,5vw,4rem)}
+.about ul{padding-left:1.1rem;color:var(--muted)}
+.about p{color:var(--muted)}
+
+.contact{background:var(--sky);color:#f1eee8;border-radius:28px;padding:clamp(2rem,6vw,4rem);text-align:left}
+.contact h2{margin-bottom:1rem}
+.contact p{max-width:34rem;margin:0 0 1.75rem;color:#c9cfdb}
+.contact .btn{border-color:var(--ochre);color:var(--ochre)}
+.contact .btn.primary{background:var(--ochre);color:#1f2633}
+
+footer{padding:2rem 0;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+
+@media (max-width:820px){
+  nav{gap:1rem}
+  .hero .wrap,.two,.project,.project:nth-child(even),.about{grid-template-columns:1fr}
+  .project:nth-child(even) img{order:0}
+  .photo{width:min(78%,320px);order:-1}
+}
+@media (max-width:480px){nav a:nth-child(n+4){display:none}}
+</style>
 </head>
-
 <body>
-    <header>
-        <a href="#" class="logo">Portfolio</a>
-        <div class="nav">
-            <a href="#home">Home</a>
-            <a href="#services">Services</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#contact">Contact</a>
-            <a href="#about">About</a>
-        </div>
-        
-        <div class="nav-responsive">
-            <a href="#home">Home</a>
-            <a href="#services">Services</a>
-            <a href="#portfolio">Projetos</a>
-            <a href="#contact">Contact</a>
-            <a href="#about">About</a>
-        </div>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#home">Arth</a>
+    <nav aria-label="Principal">
+      <a href="#atuacao">Atuação</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
 
-        <div class="menu-hamburguer">
-            <div class="bar1"></div>
-            <div class="bar2"></div>
-            <div class="bar3"></div>
-        </div>
-    </header>
-
-<!-- Home section -->
-    <section class="home" id="home">
-        <div class="home-content">
-            <h3>Hey, I'm</h3>
-            <h1>Arthur</h1>
-            <h3>Web Scraping <span>Engineer</span></h3>
-            <p>
-                Mid-level software developer at Scod Brasil. 
-            </p>
-
-            <div class="social-media">
-                <a href="https://www.instagram.com/arthur.inacio_/" target = "_blank" rel="external"><i class='bx bxl-instagram'></i></a>
-                <a href="https://www.linkedin.com/in/arth-inacio/" target = "_blank" rel="external"><i class='bx bxl-linkedin-square'></i></a>
-                <a href="https://github.com/arth-inacio" target = "_blank" rel="external"><i class='bx bxl-github'></i></a>
-            </div>
-            <div>
-                <a href="arquivos/profile.pdf" class="btn" target="_blank" rel="external">Download CV</a>
-            </div>
-        </div>
-        <div class="home-img">
-            <img src="img/perfil.png" alt="profile picture">
-        </div>
-    </section>
-<!-- end Home section -->
-
-<!-- Service section -->
-    <section class="services" id="services">
-        <h2>My
-            <span> Line of Work </span>
-        </h2>
-
-    <div class="services-container">
-        <div class="services-box">
-            <i class='bx bx-code-alt'></i>
-            <h3> Web Scrapping </h3>
-            <p>
-                Web Scraping é a técnica de extrair dados de sites de forma automatizada, usada para monitorar dados, pesquisar dados públicos e analisar concorrência. Métodos comuns incluem parsing de HTML com ferramentas como BeautifulSoup e automação de navegadores com Selenium/Playwright.
-            </p>
-
-            <a href="https://awari.com.br/web-scraping-python/" class="btn" target="_blank" rel="external">Read More</a>
-        </div>
-
-        <div class="services-box">
-        <i class="bx bx-code-curly"></i>
-            <h3> RPA </h3>
-            <p>
-                Além de utilizar web scraping no desenvolvimento de aplicações, minha principal especialidade está na automação de processos e na criação de APIs utilizando o FastAPI. Assim posso desenvolver soluções eficientes para integrar dados extraídos da web diretamente em sistemas, automatizando fluxos de trabalho complexos e facilitando o consumo desses dados. É o ideal para projetos que exigem velocidade, escalabilidade e integração contínua com serviços externos.
-            </p>
-            <a href="https://sicolos.com.br/2023/04/14/introducao-ao-rpa-automatizando-processos-de-negocios/ " class="btn" target="_blank" rel="external">Read More</a>
-        </div>
+<main>
+<div class="hero" id="home">
+  <div class="wrap">
+    <div>
+      <p class="role">Engenheiro de Web Scraping</p>
+      <h1>Arthur Inácio</h1>
+      <p class="lead">Desenvolvedor de software na Scod Brasil. Transformo páginas da web em dados confiáveis e automatizo processos que ninguém quer fazer à mão.</p>
+      <div class="btns">
+        <a class="btn primary" href="arquivos/profile.pdf">Baixar currículo</a>
+        <a class="btn ghost" href="#projetos">Ver projetos</a>
+      </div>
+      <div class="social">
+        <a href="https://github.com/arth-inacio" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/arth-inacio/" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/arthur.inacio_/" rel="noopener">Instagram</a>
+      </div>
     </div>
-    </section>
-<!-- end Service section -->
+    <div class="photo">
+      <img src="img/perfil.jpg" alt="Arthur em uma sacada, com casarões coloniais ao fundo" width="1000" height="1333">
+    </div>
+  </div>
+</div>
 
-<!-- Portfolio section -->
-    <section class="portfolio" id="portfolio">
-        <h2>Latest <span>Projects</span></h2>
+<section id="atuacao">
+  <div class="wrap">
+    <h2>O que eu faço</h2>
+    <div class="two">
+      <div>
+        <h3>Web scraping</h3>
+        <p>Extração automatizada de dados de sites para monitorar preços, pesquisar dados públicos e analisar concorrência. Uso parsing de HTML com BeautifulSoup e automação de navegador com Selenium e Playwright.</p>
+        <a class="link" href="https://awari.com.br/web-scraping-python/" rel="noopener">Saiba mais sobre web scraping</a>
+      </div>
+      <div>
+        <h3>RPA e APIs</h3>
+        <p>Minha principal especialidade é automatizar processos e criar APIs com FastAPI. Assim, os dados extraídos da web chegam direto aos sistemas, com velocidade, escalabilidade e integração com serviços externos.</p>
+        <a class="link" href="https://sicolos.com.br/2023/04/14/introducao-ao-rpa-automatizando-processos-de-negocios/" rel="noopener">Saiba mais sobre RPA</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div class="portfolio-container">
-            <div class="portfolio-box">
-                <img src="img/webcrawler.png" alt="Portfolio1">
-                <div class="portfolio-layer">
-                    <h4>Portal da Transparência</h4>
-                    <p>
-                        O Portal da Transparência é um projeto em Python focado na automação de coleta de dados financeiros públicos através de web scraping. Ele utiliza bibliotecas como Playwright para navegar em sites e extrair informações, e Pandas para manipulação e exportação dos dados em formato CSV. Seu objetivo é facilitar a análise de despesas públicas, sendo útil para fins educacionais e de transparência governamental.
-                    </p>
-                    <a href="https://github.com/arth-inacio/portal_da_transparencia" target="_blank" rel="external">
-                        <i class="bx bx-link-external"></i>
-                    </a>
-                </div>
-            </div>
+<section id="projetos">
+  <div class="wrap">
+    <h2>Projetos recentes</h2>
+    <article class="project">
+      <img src="img/webcrawler.png" alt="Ilustração de um web crawler" loading="lazy">
+      <div>
+        <h3>Portal da Transparência</h3>
+        <ul class="tags"><li>Python</li><li>Playwright</li><li>Pandas</li></ul>
+        <p>Coleta automatizada de despesas públicas por web scraping, com exportação dos dados em CSV. Facilita a análise de gastos governamentais para fins educacionais e de transparência.</p>
+        <a class="link" href="https://github.com/arth-inacio/portal_da_transparencia" rel="noopener">Ver no GitHub</a>
+      </div>
+    </article>
+    <article class="project">
+      <img src="img/software-dev.jpg" alt="Código de software em uma tela" loading="lazy">
+      <div>
+        <h3>Sistema de Vendas TobaccoRealm</h3>
+        <ul class="tags"><li>Python</li><li>Tkinter</li><li>SQLite</li></ul>
+        <p>Aplicação desktop para gestão de vendas e usuários, com login, controle de acesso e registro de operações em uma interface simples de usar.</p>
+        <a class="link" href="https://github.com/arth-inacio/sistema_de_vendas" rel="noopener">Ver no GitHub</a>
+      </div>
+    </article>
+  </div>
+</section>
 
-            <div class="portfolio-box">
-                <img src="img/software-dev.jpg" alt="Portfolio2">
-                <div class="portfolio-layer">
-                    <h4>Sistema de Vendas TobaccoRealm</h4>
-                    <p>
-                        O projeto Sistema de Vendas é uma aplicação desenvolvida em Python com interface gráfica usando Tkinter e armazenamento de dados com SQLite. Ele visa oferecer funcionalidades para gestão de vendas e usuários, apresentando uma interface intuitiva para login, controle de usuários e operações de venda.
-                    </p>
-                    <a href="https://github.com/arth-inacio/sistema_de_vendas" target="_blank" rel="external">
-                        <i class="bx bx-link-external"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-<!-- end Portfolio section -->
+<section id="sobre">
+  <div class="wrap about">
+    <h2>Sobre mim</h2>
+    <div>
+      <p>Tenho sólida experiência em desenvolvimento de software e suporte técnico em TI, com Python, JavaScript e PHP. Meu foco é programação assíncrona para web scraping e automação, com AsyncPlaywright, Asyncio, HTTPX, Requests e Selenium.</p>
+      <p>Hoje desenvolvo aplicações e automações para clientes na Scod Brasil. No dia a dia, eu:</p>
+      <ul>
+        <li>desenvolvo spiders para extração de dados;</li>
+        <li>corrijo, reviso e refatoro código;</li>
+        <li>treino novos colaboradores em técnicas de web scraping.</li>
+      </ul>
+      <p>Estudo Análise e Desenvolvimento de Sistemas na Unopar, o que une a prática a uma base teórica.</p>
+      <a class="link" href="https://www.linkedin.com/in/arth-inacio/" rel="noopener">Ver perfil completo no LinkedIn</a>
+    </div>
+  </div>
+</section>
 
-<!--Contatos section-->
-    <section class="contact" id="contact">
-        <h2>Contact<span> Me!</span></h2>
-        <form action="/save-contact" method="post">
-            <div class="input-box">
-                <input type="text" placeholder="Nome Completo/Full Name" required>
-                <input type="email" placeholder="E-mail" required>
-            </div>
-
-            <div class="input-box">
-                <input type="telefone" placeholder="Telefone/Phone Number" required>
-                <input type="text" placeholder="Assunto/Subject" required>
-            </div>
-            
-            <textarea cols="30" rows="8" placeholder="Mensagem/Message" required></textarea><br>
-
-            <a href="#" class="btn">Enviar/Submit</a>
-        </form>
-    </section>
-<!-- end Contatos section-->
-
-<!--About section-->
-    <section class="about" id="about">
-        <div class="about-img">
-            <img src="img/perfil.png" alt="About me">
-        </div>
-        <div class="about-content">
-            <h3>About Me</h3>
-            <h1> Software <span>Developer</span></h1>
-
-            <p>
-                Tenho sólida experiência em desenvolvimento de software e suporte técnico em TI, especializado em linguagens como Python, JavaScript e PHP. Possui conhecimento em programação assíncrona com foco em web scraping e automação, utilizando ferramentas/frameworks como AsyncPlaywright, Asyncio, Httpx/Async, python-requests, selenium e etc.
-
-                Atualmente, trabalho como Desenvolvedor de Software na Scod Brasil, desenvolvendo aplicações e automações para clientes. 
-                Minhas principais responsabilidades incluem: 
-                <ul>
-                    <li>Desenvolvimento de spiders para extração de dados.</li>
-                    <li>Correção, revisão e refatoração de código.</li>
-                    <li>Treinamento de novos colaboradores em técnicas de web scraping.</li>
-                </ul>
-                Formando em Análise e Desenvolvimento de Sistemas na Universidade Unopar, complementando sua prática com uma sólida base teórica.
-            </p>
-
-            <a href="https://www.linkedin.com/in/arthur-in%C3%A1cio/" target="_blank" rel="external" class="btn">Read More</a>
-        </div>
-    </section>
-<!--end About section-->
+<section id="contato">
+  <div class="wrap">
+    <div class="contact">
+      <h2>Vamos conversar?</h2>
+      <p>Tem uma coleta de dados ou automação em mente? Me chame pelo LinkedIn ou veja meu código no GitHub.</p>
+      <div class="btns" style="margin:0">
+        <a class="btn primary" href="https://www.linkedin.com/in/arth-inacio/" rel="noopener">Falar no LinkedIn</a>
+        <a class="btn" href="https://github.com/arth-inacio" rel="noopener">Ver GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
 
 <footer>
-    <p>Copyright &copy; 2024 by &lt;/Arth&gt;.</p>
+  <div class="wrap">© 2026 Arthur Inácio</div>
 </footer>
 </body>
-
-<script src="js/script.js">alert("dale");</script>
 </html>
